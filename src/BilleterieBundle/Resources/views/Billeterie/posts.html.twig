@@ -16,35 +16,22 @@
         </div>
     </section>
 
-   
-	<section id="twitter">
-		<div id="twitter-feed" class="carousel slide" data-interval="false">
-			<div class="row">
-				<div class="col-md-6">
-					<div class="blog-post ">
-						<h2>Blog post 1</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam sem, tempor vitae enim quis, aliquet hendrerit arcu. Quisque sodales quis turpis sed maximus. Etiam molestie arcu vel placerat tincidunt. Nulla eget fermentum neque, aliquet maximus turpis. Phasellus dictum tempor facilisis.</p>
-						<a href="#" class="btn btn-primary">See the whole post <i class="fa fa-angle-right"></i></a>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="blog-post ">
-						<h2>Blog post 2</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam sem, tempor vitae enim quis, aliquet hendrerit arcu. Quisque sodales quis turpis sed maximus. Etiam molestie arcu vel placerat tincidunt. Nulla eget fermentum neque, aliquet maximus turpis. Phasellus dictum tempor facilisis.</p>
-						<a href="#" class="btn btn-primary">See the whole post <i class="fa fa-angle-right"></i></a>
-					</div>
-				</div>
 
-				<div class="col-md-6">
-					<div class="blog-post ">
-						<h2>Blog post 3</h2>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam sem, tempor vitae enim quis, aliquet hendrerit arcu. Quisque sodales quis turpis sed maximus. Etiam molestie arcu vel placerat tincidunt. Nulla eget fermentum neque, aliquet maximus turpis. Phasellus dictum tempor facilisis.</p>
-						<a href="#" class="btn btn-primary">See the whole post <i class="fa fa-angle-right"></i></a>
-					</div>
-				</div>
-			</div>
-		</div>		
-	</section><!--/#twitter-feed-->
+    <section id="twitter">
+        <div id="twitter-feed" class="carousel slide" data-interval="false">
+            <div class="row">
+
+                {% for post in posts %}
+                    <div class="col-md-6">
+                        <div class="blog-post ">
+                            <h2>{{ post.titre }}</h2>
+                            <p>{{ post.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!--/#twitter-feed-->
 
 
 

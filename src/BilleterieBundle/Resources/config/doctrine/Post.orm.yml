@@ -1,7 +1,7 @@
-BilleterieBundle\Entity\Tickets:
+BilleterieBundle\Entity\Post:
     type: entity
     table: null
-    repositoryClass: BilleterieBundle\Repository\TicketsRepository
+    repositoryClass: BilleterieBundle\Repository\PostRepository
     id:
         id:
             type: integer
@@ -15,16 +15,6 @@ BilleterieBundle\Entity\Tickets:
         description:
             type: text
             nullable: true
-        lieu:
-            type: string
-            length: 255
-            nullable: true
         date:
             type: datetime
-        heureDeb:
-            type: time
-            nullable: true
-        heureFin:
-            type: time
-            nullable: true
     lifecycleCallbacks: {  }

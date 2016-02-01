@@ -19,4 +19,13 @@ BilleterieBundle\Entity\Ticket:
             type: string
             length: 255
             nullable: true
+        date:
+            type: datetime
+            nullable: true
+        heureDeb:
+            type: time
+            nullable: true
+        heureFin:
+            type: time
+            nullable: true
     lifecycleCallbacks: {  }

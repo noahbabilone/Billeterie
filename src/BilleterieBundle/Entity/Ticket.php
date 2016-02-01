@@ -3,9 +3,9 @@
 namespace BilleterieBundle\Entity;
 
 /**
- * Tickets
+ * Ticket
  */
-class Tickets
+class Ticket
 {
     /**
      * @var int
@@ -58,7 +58,7 @@ class Tickets
      *
      * @param string $titre
      *
-     * @return Tickets
+     * @return Ticket
      */
     public function setTitre($titre)
     {
@@ -82,7 +82,7 @@ class Tickets
      *
      * @param string $description
      *
-     * @return Tickets
+     * @return Ticket
      */
     public function setDescription($description)
     {
@@ -106,7 +106,7 @@ class Tickets
      *
      * @param string $lieu
      *
-     * @return Tickets
+     * @return Ticket
      */
     public function setLieu($lieu)
     {
@@ -130,7 +130,7 @@ class Tickets
      *
      * @param \DateTime $date
      *
-     * @return Tickets
+     * @return Ticket
      */
     public function setDate($date)
     {
@@ -154,7 +154,7 @@ class Tickets
      *
      * @param \DateTime $heureDeb
      *
-     * @return Tickets
+     * @return Ticket
      */
     public function setHeureDeb($heureDeb)
     {
@@ -178,7 +178,7 @@ class Tickets
      *
      * @param \DateTime $heureFin
      *
-     * @return Tickets
+     * @return Ticket
      */
     public function setHeureFin($heureFin)
     {

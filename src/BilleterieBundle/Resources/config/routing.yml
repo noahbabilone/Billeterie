@@ -5,6 +5,18 @@ billeterie_home:
 billeterie_post:
     path:     /post.html
     defaults: { _controller: BilleterieBundle:Billeterie:blog }
+
+billeterie_post_add:
+    path:     /add/post
+    defaults: { _controller: BilleterieBundle:Billeterie:addPost }
+billeterie_post_delete:
+    path:     /add/post/delete/{id}
+    defaults: { _controller: BilleterieBundle:Billeterie:add }
+    
+billeterie_post_edit:
+    path:     /add/post/
+    defaults: { _controller: BilleterieBundle:Billeterie:add }
+    
 billeterie_posts:
     path:     /posts.html
     defaults: { _controller: BilleterieBundle:Billeterie:posts }
