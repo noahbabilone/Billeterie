@@ -1,13 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Billeterie {% endblock %}</title>
+    {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>#}
+    {#<link rel="apple-touch-icon-precomposed" sizes="144x144"#}
+    {#href="{{ asset('bundles/billeterie/images/ico/apple-touch-icon-144-precomposed.png') }}">#}
+    {#<link rel="apple-touch-icon-precomposed" sizes="114x114"#}
+    {#href="{{ asset('bundles/billeterie/images/ico/apple-touch-icon-114-precomposed.png') }}">#}
+    {#<link rel="apple-touch-icon-precomposed" sizes="72x72"#}
+    {#href="{{ asset('bundles/billeterie/images/ico/apple-touch-icon-72-precomposed.png') }}">#}
+    {#<link rel="apple-touch-icon-precomposed"#}
+    {#href="{{ asset('bundles/billeterie/images/ico/apple-touch-icon-57-precomposed.png') }}">#}
+
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    {% block stylesheets %}
+        {% stylesheets
+        'bundles/billeterie/css/animate.css'
+        'bundles/billeterie/css/bootstrap.min.css'
+        'bundles/billeterie/css/font-awesome.min.css'
+        'bundles/billeterie/css/main.css'
+        'bundles/billeterie/css/responsive.css'
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+<body>
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('bundles/billeterie/js/jquery.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/bootstrap.min.js') }}"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        <script src="{{ asset('bundles/billeterie/js/smoothscroll.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/gmaps.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/jquery.parallax.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/coundown-timer.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/jquery.scrollTo.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/jquery.nav.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/main.js') }}"></script>
+    
+{% endblock %}
+</body>
 </html>

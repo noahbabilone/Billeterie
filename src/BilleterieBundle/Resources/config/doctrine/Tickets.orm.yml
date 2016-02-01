@@ -1,0 +1,30 @@
+BilleterieBundle\Entity\Tickets:
+    type: entity
+    table: null
+    repositoryClass: BilleterieBundle\Repository\TicketsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titre:
+            type: string
+            length: 255
+        description:
+            type: text
+            nullable: true
+        lieu:
+            type: string
+            length: 255
+            nullable: true
+        date:
+            type: datetime
+        heureDeb:
+            type: time
+            nullable: true
+        heureFin:
+            type: time
+            nullable: true
+    lifecycleCallbacks: {  }

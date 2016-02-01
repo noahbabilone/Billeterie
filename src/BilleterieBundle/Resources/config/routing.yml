@@ -1,0 +1,16 @@
+billeterie_home:
+    path:     /
+    defaults: { _controller: BilleterieBundle:Billeterie:index }
+    
+billeterie_post:
+    path:     /post.html
+    defaults: { _controller: BilleterieBundle:Billeterie:blog }
+billeterie_posts:
+    path:     /posts.html
+    defaults: { _controller: BilleterieBundle:Billeterie:posts }
+
+billeterie_send_mail:
+    path:     /sendmail
+    defaults: { _controller: BilleterieBundle:Billeterie:sendMail }
+    requirements:
+        _method: POST   
