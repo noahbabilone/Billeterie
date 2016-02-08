@@ -1,0 +1,44 @@
+{% extends "BilleterieBundle::layout.html.twig" %}
+
+{% block title %}
+    Home - {{ parent() }}
+{% endblock %}
+
+{% block body_billeterie %}
+    <section id="home">
+        <div id="main-slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive" src="{{ asset('bundles/billeterie/images/slider/bg4.jpg') }}"
+                         alt="slider">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="post">
+        <div id="twitter-feed" class="carousel slide" data-interval="false">
+            <div class="row">
+                {% if blog is defined %}
+                    <div class="post col-md-12">
+                        <h1>    
+                            {{ blog.titre | capitalize}}</h1>
+                        {{ blog.description | raw }}
+
+                        <p><small class="pull-right">Date de publication: {{ blog.date | date('D d M Y') }}</small></p>
+                        <a href="{{ path("billeterie_post_edit",{'slug':blog.slug}) }}" class="btn btn-primary"> Edit Blog</a>
+                    
+                    </div>
+                {% else %}
+                    <div class="post col-md-12">
+                        <p>Page introuvable</p>
+                    </div>
+
+                {% endif %}
+            </div>
+        </div>
+    </section><!--/#twitter-feed-->
+
+
+
+{% endblock %}

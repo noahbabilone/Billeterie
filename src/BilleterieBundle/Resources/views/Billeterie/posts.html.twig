@@ -20,12 +20,21 @@
     <section id="twitter">
         <div id="twitter-feed" class="carousel slide" data-interval="false">
             <div class="row">
+                <div class="col-md-12">
+                    <p><a href="{{ path('billeterie_blog_add') }}" class="btn btn-success"> Post Add
+                            <i class="fa fa-"></i></a>
+                    </p>
+                </div>
 
-                {% for post in posts %}
+                {% for blog in posts %}
                     <div class="col-md-6">
                         <div class="blog-post ">
-                            <h2>{{ post.titre }}</h2>
-                            <p>{{ post.description }}</p>
+                            <h3>{{ blog.titre  | capitalize }}</h3>
+
+                            <p> {{ blog.description | striptags | slice(0, 200) }}</p>
+                            <a href="{{ path('billeterie_blog_view',{'slug':blog.slug}) }}" class="btn btn-primary">See
+                                the whole post <i class="fa fa-angle-right"></i></a>
+
                         </div>
                     </div>
                 {% endfor %}

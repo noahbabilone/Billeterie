@@ -2,43 +2,61 @@
 
 namespace BilleterieBundle\Entity;
 
-    use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Post
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="BilleterieBundle\Repository\PostRepository")
  */
 class Post
 {
     /**
      * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="titre", type="string", length=255)
      */
     private $titre;
+
     /**
      * @var string
      * @Gedmo\Slug(fields={"titre"}, updatable=false)
-     * @ORM\Column(length=255, unique=true)
+     * @ORM\Column(length=128, unique=true)
      */
     private $slug;
 
+
     /**
      * @var string
+     *
+     * @ORM\Column(name="descriptin", type="text", nullable=true)
      */
     private $description;
 
-    /**
+     /**
      * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=true)
      */
     private $date;
 
     public function __construct()
     {
-        $this->date= new \DateTime();
+        $this->date = new \DateTime();
     }
+
     /**
      * Get id
      *
@@ -72,7 +90,8 @@ class Post
     {
         return $this->titre;
     }
-/**
+
+    /**
      * Set slug
      *
      * @param string $slug
