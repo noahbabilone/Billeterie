@@ -1,16 +1,12 @@
 {% extends "::base.html.twig" %}
-{% block title %}
-    Test - {{ parent() }}
-{% endblock %}
-
-
 
 {% block body %}
-    {% include "BilleterieBundle::menu.html.twig" %}
+    {% include "BilleterieBundle:Includes:menu.html.twig" %}
     {% block body_billeterie %}
     {% endblock %}
-    {% include "BilleterieBundle::contact.html.twig" %}
-    {% include "BilleterieBundle::footer.html.twig" %}
+    {% include "BilleterieBundle:Includes:about.html.twig" %}
+    {% include "BilleterieBundle:Includes:contact.html.twig" %}
+    {% include "BilleterieBundle:Includes:footer.html.twig" %}
 {% endblock %}
 
 

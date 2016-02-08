@@ -2,6 +2,8 @@
 
 namespace BilleterieBundle\Entity;
 
+    use Gedmo\Mapping\Annotation as Gedmo;
+
 /**
  * Post
  */
@@ -16,6 +18,12 @@ class Post
      * @var string
      */
     private $titre;
+    /**
+     * @var string
+     * @Gedmo\Slug(fields={"titre"}, updatable=false)
+     * @ORM\Column(length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @var string
@@ -63,6 +71,29 @@ class Post
     public function getTitre()
     {
         return $this->titre;
+    }
+/**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Post
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get Slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**
@@ -113,4 +144,3 @@ class Post
         return $this->date;
     }
 }
-

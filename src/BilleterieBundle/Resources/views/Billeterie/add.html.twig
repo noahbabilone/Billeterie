@@ -1,7 +1,7 @@
 {% extends "BilleterieBundle::layout.html.twig" %}
 
 {% block title %}
-    Home - {{ parent() }}
+    Add Post - {{ parent() }}
 {% endblock %}
 
 {% block body_billeterie %}
@@ -19,38 +19,32 @@
     <section id="post">
         <div id="twitter-feed" class="carousel slide" data-interval="false">
             <div class="row">
+                <h1>Add Post</h1>
+
+                {{ form_start(form) }}
                 <div class="post col-md-12">
-                    <div class="form-group has-feedback">
-                        {{ form_start(form, {'method': 'POST', 'attr': { 'class': 'form-horizontal','role':'form'} }) }}
 
-                        <h1>Add Post</h1>
+                    <div class="form-group ">
+                        {{ form_label(form.titre, "Titre :", {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_widget (form.titre) }}
+
+                    </div>
+                    <div class="form-group ">
+                        {{ form_label(form.description, "Description :", {'label_attr': {'class': 'control-label'}}) }}
+                        {{ form_widget (form.description) }}
+
+                    </div>
+                    <div class="form-group ">
                         <div class="row">
-
                             <div class="col-sm-3">
-                                {{ form_label(form.titre, "Titre :", {'label_attr': {'class': 'control-label'}}) }}
-                            </div>
-                            <div class="col-sm-8">
-                                {{ form_widget (form.titre,{'attr':{'class':'form-control'} }) }}
-                            </div>
-                            <div class="col-sm-3">
-                                {{ form_label(form.description, "Description :", {'label_attr': {'class': 'control-label'}}) }}
-                            </div>
-                            <div class="col-sm-8">
-                                {{ form_widget (form.description,{'attr':{'class':'form-control'} }) }}
-                            </div>
-                            <div class="col-sm-2">
                                 {{ form_widget (form.save,{'attr':{'class':'form-control btn-sm'} }) }}
                             </div>
                         </div>
-                        {{ form_end(form) }}
                     </div>
                 </div>
-                <div class="item">
-                    <img src="https://pbs.twimg.com/profile_images/443336758403424256/U5bzXI5l.jpeg" alt="">
+                {{ form_end(form) }}
 
-                    <p>Creator of the PHP framework Symfony</p>
-                    <a href="https://twitter.com/fabpot">Twitter account</a>
-                </div>
+
             </div>
         </div>
     </section><!--/#twitter-feed-->

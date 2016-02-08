@@ -1,20 +1,22 @@
 billeterie_home:
     path:     /
     defaults: { _controller: BilleterieBundle:Billeterie:index }
-    
-billeterie_post:
-    path:     /post.html
-    defaults: { _controller: BilleterieBundle:Billeterie:blog }
+ 
 
 billeterie_post_add:
     path:     /add/post
     defaults: { _controller: BilleterieBundle:Billeterie:addPost }
+
+billeterie_ticket_add:
+    path:     /add/ticket
+    defaults: { _controller: BilleterieBundle:Billeterie:addTicket }
+
 billeterie_post_delete:
-    path:     /add/post/delete/{id}
-    defaults: { _controller: BilleterieBundle:Billeterie:add }
+    path:     /post/delete/{id}
+    defaults: { _controller: BilleterieBundle:Billeterie:delete }
     
 billeterie_post_edit:
-    path:     /add/post/
+    path:     /edit-post
     defaults: { _controller: BilleterieBundle:Billeterie:add }
     
 billeterie_posts:

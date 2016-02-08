@@ -1,8 +1,8 @@
 services:
-     billeterie.mailer:
-         class: BilleterieBundle\Service\Mailer
-         arguments:
-           - %sendmail%
+#     billeterie.mailer:
+#         class: BilleterieBundle\Service\Mailer
+#         arguments:
+#           - %sendmail%
 #    billeterie.example:
 #        class: BilleterieBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
