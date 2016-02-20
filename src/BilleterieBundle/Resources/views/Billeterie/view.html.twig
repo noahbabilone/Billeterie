@@ -21,13 +21,17 @@
             <div class="row">
                 {% if blog is defined %}
                     <div class="post col-md-12">
-                        <h1>    
-                            {{ blog.titre | capitalize}}</h1>
+                        <h1>
+                            {{ blog.titre | capitalize }}</h1>
                         {{ blog.description | raw }}
-
-                        <p><small class="pull-right">Date de publication: {{ blog.date | date('D d M Y') }}</small></p>
-                        <a href="{{ path("billeterie_post_edit",{'slug':blog.slug}) }}" class="btn btn-primary"> Edit Blog</a>
-                    
+                        <p>
+                            <small class="pull-right">Date de publication: {{ blog.date | date('D d M Y') }}</small>
+                        </p>
+                        
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path("billeterie_post_edit",{'slug':blog.slug}) }}" class="btn btn-primary">
+                                Edit Blog</a>
+                        {% endif %}
                     </div>
                 {% else %}
                     <div class="post col-md-12">

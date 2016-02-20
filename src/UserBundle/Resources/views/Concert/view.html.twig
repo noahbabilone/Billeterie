@@ -1,0 +1,156 @@
+{% extends "UserBundle::layout.html.twig" %}
+{% block title %}
+    {{ parent() }} -
+{% endblock %}
+
+{% block user_body %}
+    {% if concert.id %}
+
+        <div class="col-sm-10 main">
+            <h2 class="page-header">{{ concert.name | capitalize }}
+                <small> (ID:{{ concert.id }})</small>
+            </h2>
+            <div class="row">
+                <input type="hidden" id="idAd" value="{{ concert.id }}">
+
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row bs-callout bs-callout-primary">
+
+                                <div class="col-sm-9">
+                                    <div class="row">
+                                        <div class="col-sm-10">
+                                            <p>Date du concert: {{ concert.date | date('d M y') }}</p>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <p>Prix: {{ concert.price }} €</p>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <p>Adresse: {{ concert.address }}</p>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <p>Code Postal: {{ concert.codP }}</p>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <p>Ville: {{ concert.city }}</p>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <br>
+                                            <h5>Description:</h5>
+
+                                            <p>{{ concert.description | raw }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row control-group">
+                                        <div class="col-sm-2">
+                                            <strong>Etat:</strong>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            {{ concert.state.title }}
+                                        </div>
+
+                                        <div class="col-sm-12 pull-left">
+                                            <br>
+                                        </div>
+                                         <div class="col-sm-3">
+
+                                            <a href="{{ path('user_admin_list_concert') }}" id="concert-{{ concert.id }}" class="btn btn-default btn-sm form-control btn-delete-concert">
+                                                <i class="glyphicon glyphicon-trash text-danger " data-toggle="modal"
+                                                   data-target="#myModal"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <a href="{{ path('user_admin_edit_concert', {'slug': concert.slug}) }}"
+                                               class="btn btn-default btn-sm form-control">
+                                                <i class="glyphicon glyphicon-cog text-primary"></i> Modifier
+                                            </a>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 " id="btn-share">
+                            <div class="row">
+                                <div class="col-sm-12"><h4>Partager l'annonce </h4></div>
+                                <div class="col-sm-12">
+                                    <a class="btn btn-facebook btn-lg share_sn"
+                                       data-url="{{ path('user_admin_view_concert', {'slug': concert.slug}) }}"
+                                       id="share_facebook">
+                                        <i class="fa fa-facebook fa-lg"></i>{# Partager sur facebook#}
+                                    </a>
+                                    <a href="http://42consulting.fr"
+                                       data-url="{{ path('user_admin_view_concert', {'slug': concert.slug}) }}"
+                                       title="tweet"
+                                       id="share_twitter" class="btn btn-twitter btn-lg share_sn">
+                                        <i class="fa fa-twitter fa-lg"></i>
+                                    </a>
+                                    <a class="btn btn-linkedin btn-lg share_sn"
+                                       data-url="{{ path('user_admin_view_concert', {'slug': concert.slug}) }}"
+                                       id="share_linkedin">
+                                        <i class="fa fa-linkedin fa-lg"></i> {#Partager sur twitter#}
+                                    </a>
+                                    <a class="btn btn-google-plus btn-lg share_sn"
+                                       data-url="{{ path('user_admin_view_concert', {'slug': concert.slug}) }}"
+                                       id="share_gplus">
+                                        <i class="fa fa-google-plus fa-lg"></i> {#Partager sur twitter#}
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Suppression d'annonce n°<span id="idconcert-delete"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <p>Vous voulez vraiment supprimer cette annonce !!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm ok-delete" data-dismiss="modal">Oui <i class="glyphicon glyphicon-ok"></i> </button>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Non <i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% else %}
+        <div class="col-sm-10 main">
+            <h3 class="lead text-center">
+                Annonce n'existe pas.
+            </h3>
+        </div>
+
+    {% endif %}
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/billeterie/js/social.js') }}"></script>
+{% endblock %}

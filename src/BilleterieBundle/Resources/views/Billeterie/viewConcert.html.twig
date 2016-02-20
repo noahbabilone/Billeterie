@@ -1,0 +1,76 @@
+{% extends "BilleterieBundle::layout.html.twig" %}
+
+{% block title %}
+    Home - {{ parent() }}
+{% endblock %}
+
+{% block body_billeterie %}
+    <section id="home">
+        <div id="main-slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive" src="{{ asset('bundles/billeterie/images/slider/bg4.jpg') }}"
+                         alt="slider">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="post">
+        <div id="twitter-feed" class="carousel slide" data-interval="false">
+            <div class="row">
+                <div class="post col-md-12">
+
+                    {% if concert is defined %}
+                        <h1>{{ concert.name | capitalize }}</h1>
+
+                        <ul class="list-unstyled">
+                            <li>Date du Concert: {{ concert.date | date('D d M Y') }}</li>
+                            <li>Prix: {{ concert.price }} €</li>
+                            <li>Adress: {{ concert.address }}</li>
+                            <li>Code postal: {{ concert.codP }}</li>
+                            <li>Ville : {{ concert.city }}</li>
+                        </ul>
+
+                        {{ concert.description | raw }}
+
+
+                    {% else %}
+                        <p>Page introuvable</p>
+
+                    {% endif %}
+                    <div class="row">
+                        {% if app.user %}
+
+                            <div class="col-sm-1">
+                                <input type="number" class="form-control" value="1" required>
+
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="{{ path('billeterie_view_all_concert') }}" class="btn btn-success btn-xs">Ajouter
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="col-sm-5">
+                                <p> Veuillez vouz connecter pour participer aux événements.</p>
+                                    <a class="btn btn-sm btn-info" href="{{ path('fos_user_security_login') }}">Connexion</a>
+
+                            </div>
+
+
+                        {% endif %}
+
+                    </div>
+                </div>
+                <div class="post col-md-12">
+
+                    <a href="{{ path('billeterie_view_all_concert') }}" class="btn btn-primary btn-sm">Voir tous les
+                        concerts</a>
+                </div>
+            </div>
+        </div>
+    </section><!--/#twitter-feed-->
+
+
+{% endblock %}

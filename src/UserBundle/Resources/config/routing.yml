@@ -1,0 +1,27 @@
+user_homepage:
+    path:     /home
+    defaults: { _controller: UserBundle:Default:index }
+user_profile:
+    path:     /user
+    defaults: { _controller: UserBundle:Default:index }
+user_admin_list_concert:
+    path:     /admin
+    defaults: { _controller: UserBundle:User:index }   
+    
+#    CRUD concert
+user_admin_view_concert:
+    path:     /admin/concert/veiw/{slug}
+    defaults: { _controller: UserBundle:User:viewConcert } 
+user_admin_delete_concert:
+    path:     /admin/concert/delete
+    defaults: { _controller: UserBundle:User:deleteConcert } 
+    options:
+        expose: true
+user_admin_add_concert:
+    path:     /admin/concert/add
+    defaults: { _controller: UserBundle:User:addConcert }   
+    
+user_admin_edit_concert:
+    path:     /admin/concert/edit/{slug}
+    defaults: { _controller: UserBundle:User:editConcert }   
+

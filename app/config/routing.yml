@@ -1,7 +1,16 @@
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /account
+
 billeterie:
     resource: "@BilleterieBundle/Resources/config/routing.yml"
     prefix:   /
-
+#fos user
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+    # app/config/routing.yml
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
 #app:
 #    resource: "@AppBundle/Controller/"
 #    type:     annotation

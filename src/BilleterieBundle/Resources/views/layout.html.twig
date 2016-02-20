@@ -1,34 +1,30 @@
 {% extends "::base.html.twig" %}
-
-{% block body %}
-    {% include "BilleterieBundle:Includes:menu.html.twig" %}
+{% block body_site %}
     {% block body_billeterie %}
     {% endblock %}
-    {% include "BilleterieBundle:Includes:about.html.twig" %}
-    {% include "BilleterieBundle:Includes:contact.html.twig" %}
-    {% include "BilleterieBundle:Includes:footer.html.twig" %}
+    
+        {% include ":Includes:about.html.twig" %}
+    {% include ":Includes:contact.html.twig" %}
 {% endblock %}
-
-
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
 
         document.querySelector("#send_message").addEventListener('click', function (e) {
             var data = {
-                name: $.trim($('[name="name"]').val()),
-                subject: $.trim($('[name="subject"]').val()),
-                email: $.trim($('[name="email"]').val()),
-                message: $.trim($('[name="message"]').val()),
+                        name: $.trim($('[name="name"]').val()),
+                        subject: $.trim($('[name="subject"]').val()),
+                        email: $.trim($('[name="email"]').val()),
+                        message: $.trim($('[name="message"]').val()),
                     },
-                url = '{{ path('billeterie_send_mail') }}';
-                console.log(data);
+                    url = '{{ path('billeterie_send_mail') }}';
+            console.log(data);
             $.post(url,
                     data).done(function (result) {
                         var data = $.parseJSON(result);
                         console.log(data);
                         if (data.response == 'success') {
-                            var $message = $("<p>"+data.message+"</p>")
+                            var $message = $("<p>" + data.message + "</p>")
                             $('#contact-section').html($message.hide().delay(300).fadeIn(700));
                         }
                     });

@@ -1,0 +1,67 @@
+{% extends "BilleterieBundle::layout.html.twig" %}
+
+{% block title %}
+    Home - {{ parent() }}
+{% endblock %}
+
+{% block body_billeterie %}
+    <section id="home">
+        <div id="main-slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img class="img-responsive" src="{{ asset('bundles/billeterie/images/slider/bg4.jpg') }}"
+                         alt="slider">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="post">
+        <div id="twitter-feed" class="carousel slide" data-interval="false">
+            <div class="row">
+                <div class="post col-md-12">
+                    <table class="table table-hover">
+                        <tr class="">
+                            {#<th>Id</th>#}
+                            <th class="col-sm-3">Titre</th>
+                            <th class="col-sm-3">Ville</th>
+                            <th class="col-sm-2">Prix</th>
+                            <th class="col-sm-1">Nb Places</th>
+                            <th class="col-sm-2">Date du concert</th>
+                            <th class="col-sm-1">Liens</th>
+                        </tr>
+
+                        {% for concert in concerts %}
+                               <tr  {% if loop.index is odd %}class="color"{% endif %} id="tr-concert-{{ concert.id }}">
+
+                                <td>{{ concert.name | capitalize }}</td>
+
+                                <td>{{ concert.city }}</td>
+                                <td>{{ concert.price }} €</td>
+                                <td>{{ concert.nbPlace }}</td>
+
+                                <td>{{ concert.date | date('d M Y') }}</td>
+                             <td>                          
+                              <a href="{{ path('billeterie_view_concert', {'slug': concert.slug}) }}">  
+                              Voir </a>
+
+</td>
+                            </tr>
+                        </a>
+
+
+                        {% endfor %}
+                    </table>
+                
+                    <div class="navigation">
+                        {{ knp_pagination_render(concerts) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section><!--/#twitter-feed-->
+
+
+
+{% endblock %}

@@ -27,19 +27,27 @@
     {% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}
+{% block body %}
+    {% include ":Includes:menu.html.twig" %}
+
+    {% block body_site %}
+    {% endblock %}
+
+    {% include ":Includes:footer.html.twig" %}
+
+{% endblock %}
 {% block javascripts %}
     <script src="{{ asset('bundles/billeterie/js/jquery.js') }}"></script>
     <script src="{{ asset('bundles/billeterie/js/bootstrap.min.js') }}"></script>
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="{{ asset('bundles/billeterie/js/smoothscroll.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/smoothscroll.js') }}"></script>
     <script src="{{ asset('bundles/billeterie/js/gmaps.js') }}"></script>
     <script src="{{ asset('bundles/billeterie/js/jquery.parallax.js') }}"></script>
     <script src="{{ asset('bundles/billeterie/js/coundown-timer.js') }}"></script>
     <script src="{{ asset('bundles/billeterie/js/jquery.scrollTo.js') }}"></script>
     <script src="{{ asset('bundles/billeterie/js/jquery.nav.js') }}"></script>
     <script src="{{ asset('bundles/billeterie/js/main.js') }}"></script>
-    
+
 {% endblock %}
 </body>
 </html>

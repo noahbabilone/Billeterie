@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Evento.fr{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    {% block stylesheets %}
+        {% stylesheets
+        'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css'
+        'bundles/billeterie/css/bootstrap.min.css'
+        'bundles/billeterie/css/form.css'
+        'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
+
+        filter='cssrewrite' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
+
+
+</head>
+<body>
+{% block body %}{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('bundles/billeterie/js/jquery.js') }}"></script>
+    <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/billeterie/js/app.js') }}"></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+{% endblock %}
+
+{#<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>#}
+
+</body>
+</html>

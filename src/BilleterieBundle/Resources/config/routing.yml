@@ -24,11 +24,26 @@ billeterie_blog_view:
     path:     /blog/{slug}
     defaults: { _controller: BilleterieBundle:Billeterie:blogView }
 
+#Tickets
 billeterie_ticket_add:
     path:     /add/ticket
     defaults: { _controller: BilleterieBundle:Billeterie:addTicket }
+ 
+#Session
+billeterie_session:
+    path:     /session
+    defaults: { _controller: BilleterieBundle:Billeterie:session }
+ 
 billeterie_send_mail:
     path:     /sendmail
     defaults: { _controller: BilleterieBundle:Billeterie:sendMail }
     requirements:
         _method: POST   
+
+billeterie_view_concert:
+    path:     /concert/veiw/{slug}
+    defaults: { _controller: BilleterieBundle:Concert:viewConcert } 
+
+billeterie_view_all_concert:
+    path:     /concert/all
+    defaults: { _controller: BilleterieBundle:Concert:allConcert } 

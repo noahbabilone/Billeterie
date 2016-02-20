@@ -20,12 +20,14 @@
     <section id="twitter">
         <div id="twitter-feed" class="carousel slide" data-interval="false">
             <div class="row">
-                <div class="col-md-12">
-                    <p><a href="{{ path('billeterie_blog_add') }}" class="btn btn-success"> Post Add
-                            <i class="fa fa-"></i></a>
-                    </p>
-                </div>
+                {% if is_granted('ROLE_ADMIN') %}
 
+                    <div class="col-md-12">
+                        <p><a href="{{ path('billeterie_blog_add') }}" class="btn btn-success"> Post Add
+                                <i class="fa fa-"></i></a>
+                        </p>
+                    </div>
+                {% endif %}
                 {% for blog in posts %}
                     <div class="col-md-6">
                         <div class="blog-post ">

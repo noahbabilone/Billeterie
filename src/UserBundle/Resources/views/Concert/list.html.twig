@@ -1,0 +1,113 @@
+{% extends "UserBundle::layout.html.twig" %}
+
+
+{% block title %}
+    Listes des concerts - {{ parent() }}
+{% endblock %}
+
+{% block user_body %}
+
+    <div class="col-sm-10 main">
+        <h2 class="page-header">Listes des concerts</h2>
+
+        <div class="row">
+            <div class="col-sm-10">
+                {#{% include 'Zone51concertBundle:concert:search.html.twig' %}#}
+            </div>
+            <div class="col-sm-12">
+                {# total items count #}
+                <div class="count">
+                    <h5> Nombre d'annonce: {{ concerts.getTotalItemCount }}</h5>
+                </div>
+                <div class="alert alert-success hide response-ajax">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <span class="response-ajax"></span>
+                </div>
+                <div class="table-responsive">
+
+                    <table class="table table-hover">
+                        <tr class="">
+                            {#<th>Id</th>#}
+                            <th class="col-sm-2">Titre</th>
+                            <th>Prix</th>
+                            <th>Ville</th>
+                            <th>Nb Places</th>
+                            <th>Etat</th>
+                            <th>DateDate</th>
+                            <th class="col-sm-2">Actions</th>
+                        </tr>
+                        {% for concert in concerts %}
+
+                            <tr {% if loop.index is odd %}class="color"{% endif %} id="tr-concert-{{ concert.id }}">
+                                {#<td>{{ concert.id }}</td>#}
+                                <td>{{ concert.name }}</td>
+                                <td>{{ concert.price }} €</td>
+                                <td>{{ concert.city }}</td>
+                                <td>{{ concert.nbPlace }}</td>
+
+                                <td>{{ concert.state.title }}</td>
+                                <td>{{ concert.date | date('d M Y') }}</td>
+                                <td class="col-sm-2">
+                                    <a href="{{ path('user_admin_view_concert', {'slug': concert.slug}) }}"
+                                       class="btn btn-default btn-xs">
+                                        <i class="glyphicon glyphicon-eye-open text-success"></i>
+                                    </a>
+                                    <a href="{{ path('user_admin_edit_concert', {'slug': concert.slug}) }}"
+                                       class="btn btn-default btn-xs">
+                                        <i class="glyphicon glyphicon-cog text-primary"></i>
+                                    </a>
+                                    <a id="concert-{{ concert.id }}" href="" class="btn btn-default btn-xs btn-delete-concert"
+                                       data-toggle="modal">
+                                        <i class="glyphicon glyphicon-trash text-danger" data-target="#myModal"> </i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="8" class="active"><h3 class="text-center ">Aucune annonce trouvée</h3></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                {# display navigation #}
+
+                <div class="navigation">
+                    {{ knp_pagination_render(concerts) }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" id="myModal" role="dialog">
+        <div class="modal-dialog" role="document">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Suppression d'annonce n°<span id="idconcert-delete"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <p>Vous voulez vraiment supprimer cette annonce !!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm ok-delete" data-dismiss="modal">Oui <i class="glyphicon glyphicon-ok"></i> </button>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Non <i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
+ {#{% block javascripts %}#}
+     {#{{ parent() }}#}
+     {#{% javascripts#}
+     {#'assets/js/removeconcert.js' %}#}
+     {#<script src="{{ asset_url }}"></script>#}
+     {#{% endjavascripts %}#}
+ {#{% endblock %}#}

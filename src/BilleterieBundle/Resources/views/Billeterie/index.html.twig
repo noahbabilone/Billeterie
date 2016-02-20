@@ -91,83 +91,63 @@
 
     <section id="event">
         <div class="container">
+
             <div class="row">
                 <div class="col-sm-12 col-md-9">
+
                     <div id="event-carousel" class="carousel slide" data-interval="false">
-                        <h2 class="heading">THE ROCKING Performers</h2>
+                        <h2 class="heading">Nos Concerts <small><a class="link" href="{{ path('billeterie_view_all_concert') }}">Voir tous nos
+                            concerts</a></small></h2>
+                        
+            
                         <a class="even-control-left" href="#event-carousel" data-slide="prev"><i
                                     class="fa fa-angle-left"></i></a>
                         <a class="even-control-right" href="#event-carousel" data-slide="next"><i
                                     class="fa fa-angle-right"></i></a>
 
+
                         <div class="carousel-inner">
+                            {% for concert in concerts %}
+                            {% if loop.index == 1 %}
                             <div class="item active">
                                 <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="single-event">
-                                            <img class="img-responsive"
-                                                 src="{{ asset('bundles/billeterie/images/event/event1.jpg') }}"
-                                                 alt="event-image">
-                                            <h4>Chester Bennington</h4>
-                                            <h5>Vocal</h5>
+                                    {% elseif (loop.index -1) is divisible by(3) %}
+                                    <div class="item">
+                                        <div class="row">
+                                            {% endif %}
+
+
+                                            <div class="col-sm-4">
+                                                <div class="single-event">
+                                                    <img class="img-responsive"
+                                                         src="{{ asset('bundles/billeterie/images/event/event1.jpg') }}"
+                                                         alt="event-image">
+                                                    <h4>{{ concert.name }}</h4>
+                                                    <h5>Prix: {{ concert.price }}€ - {{ concert.city }}</h5>
+                                                    <a class="btn btn-primary btn-xs"
+                                                       href="{{ path('billeterie_view_concert', {'slug': concert.slug}) }}">Voir</a>
+                                                </div>
+                                            </div>
+
+                                            {% if (loop.index) is divisible by(3) %}
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
-                                        <div class="single-event">
-                                            <img class="img-responsive"
-                                                 src="{{ asset('bundles/billeterie/images/event/event2.jpg') }}"
-                                                 alt="event-image">
-                                            <h4>Mike Shinoda</h4>
-                                            <h5>vocals, rhythm guitar</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="single-event">
-                                            <img class="img-responsive"
-                                                 src="{{ asset('bundles/billeterie/images/event/event3.jpg') }}"
-                                                 alt="event-image">
-                                            <h4>Rob Bourdon</h4>
-                                            <h5>drums</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <div class="single-event">
-                                            <img class="img-responsive"
-                                                 src="{{ asset('bundles/billeterie/images/event/event1.jpg') }}"
-                                                 alt="event-image">
-                                            <h4>Chester Bennington</h4>
-                                            <h5>Vocal</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="single-event">
-                                            <img class="img-responsive"
-                                                 src="{{ asset('bundles/billeterie/images/event/event2.jpg') }}"
-                                                 alt="event-image">
-                                            <h4>Mike Shinoda</h4>
-                                            <h5>vocals, rhythm guitar</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="single-event">
-                                            <img class="img-responsive"
-                                                 src="{{ asset('bundles/billeterie/images/event/event3.jpg') }}"
-                                                 alt="event-image">
-                                            <h4>Rob Bourdon</h4>
-                                            <h5>drums</h5>
-                                        </div>
-                                    </div>
+                                    {% endif %}
+
+
+
+                                    {% endfor %}
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="guitar">
-                    <img class="img-responsive" src="{{ asset('bundles/billeterie/images/guitar.png') }}" alt="guitar">
+                    <img class="img-responsive"
+                         src="{{ asset('bundles/billeterie/images/guitar.png') }}"
+                         alt="guitar">
                 </div>
             </div>
         </div>
