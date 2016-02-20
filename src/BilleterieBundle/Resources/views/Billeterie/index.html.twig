@@ -96,10 +96,12 @@
                 <div class="col-sm-12 col-md-9">
 
                     <div id="event-carousel" class="carousel slide" data-interval="false">
-                        <h2 class="heading">Nos Concerts <small><a class="link" href="{{ path('billeterie_view_all_concert') }}">Voir tous nos
-                            concerts</a></small></h2>
-                        
-            
+                        <h2 class="heading">Nos Concerts
+                            <small><a class="link" href="{{ path('billeterie_view_all_concert') }}">Voir tous nos
+                                    concerts</a></small>
+                        </h2>
+
+
                         <a class="even-control-left" href="#event-carousel" data-slide="prev"><i
                                     class="fa fa-angle-left"></i></a>
                         <a class="even-control-right" href="#event-carousel" data-slide="next"><i
@@ -115,13 +117,17 @@
                                     <div class="item">
                                         <div class="row">
                                             {% endif %}
-
-
                                             <div class="col-sm-4">
                                                 <div class="single-event">
-                                                    <img class="img-responsive"
-                                                         src="{{ asset('bundles/billeterie/images/event/event1.jpg') }}"
-                                                         alt="event-image">
+
+                                                    <img
+                                                    {% if concert.image is null  or concert.image.path is null %}
+                                                        src="{{ asset('uploads/images/400x300.png') }}"
+                                                    {% else %}
+                                                        src="{{ asset(concert.image.AssetPath ) }}"
+                                                    {% endif %}
+                                                    alt="" width="350" class="img-responsive" height="250">
+                                                    
                                                     <h4>{{ concert.name }}</h4>
                                                     <h5>Prix: {{ concert.price }}€ - {{ concert.city }}</h5>
                                                     <a class="btn btn-primary btn-xs"

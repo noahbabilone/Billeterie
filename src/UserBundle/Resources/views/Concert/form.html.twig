@@ -13,257 +13,248 @@
 {% block user_body %}
 
     {#{{ form(form) }}#}
-<div class="col-sm-10 main">
-    <h3 class="page-header">Ajouter une annonce</h3>
+    <div class="col-sm-10 main">
+        <h3 class="page-header">Ajouter une annonce</h3>
 
-    <div class="row">
-        {{ form_start(form, {'method': 'POST', 'attr': { 'class': 'form-horizontal addForm', 'data-toggole':'validator','role':'form'} }) }}
-        <div class="col-sm-8">
+        <div class="row">
+            {{ form_start(form, {'method': 'POST', 'attr': { 'class': 'form-horizontal addForm', 'data-toggole':'validator','role':'form'} }) }}
+            <div class="col-sm-8">
 
-            <div class="form-group has-feedback">
-                <div class="row">
-                    {% if not form.vars.valid %}
-                        <div class="col-sm-12">
-                            <div class="alert alert-danger" role="alert">
-                                {{ form_errors(form) }}
-                            </div>
-                        </div>
-                    {% endif %}
-
-                    {% if modified is defined %}
-                        {% if modified %}
-                            <div class="col-sm-12 ">
-                                <div class="alert alert-success" role="alert">
-                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-
-                                    <p>L'annonce a été modifiée. </p>
+                <div class="form-group has-feedback">
+                    <div class="row">
+                        {% if not form.vars.valid %}
+                            <div class="col-sm-12">
+                                <div class="alert alert-danger" role="alert">
+                                    {{ form_errors(form) }}
                                 </div>
                             </div>
                         {% endif %}
-                    {% endif %}
 
-                    {% if form.name is defined %}
-                        <div class="col-sm-3">
-                            {{ form_label(form.name,'Nom du concert', {'label_attr': {'class':'control-label'}}) }}
-                        </div>
+                        {% if modified is defined %}
+                            {% if modified %}
+                                <div class="col-sm-12 ">
+                                    <div class="alert alert-success" role="alert">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 
-                        <div class="col-sm-12">
-                            {{ form_widget(form.name) }}
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-
-
-            {#{% if form.image is defined %}#}
-            {#<div class="form-group">#}
-            {#<div class="row">#}
-            {#<div class="col-sm-12">#}
-            {#{{ form_widget(form.image) }}#}
-            {#</div>#}
-
-            {#</div>#}
-            {#</div>#}
-            {#{% endif %}#}
-
-            {#{% if form.image is defined %}#}
-            {#<div class="form-group">#}
-            {#<div class="row">#}
-            {#<div class="col-sm-12">#}
-            {#{{ form_widget(form.image) }}#}
-            {#</div>#}
-
-            {#</div>#}
-            {#</div>#}
-            {#{% endif %}#}
-
-
-            {% if form.date is defined %}
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-5">
-                                    {{ form_label(form.date, "Date du concert: ", {'label_attr': {'class':
-                                        'control-label'}}) }}
+                                        <p>L'annonce a été modifiée. </p>
+                                    </div>
                                 </div>
+                            {% endif %}
+                        {% endif %}
 
-                                <div class="col-sm-7 text-right text-success">
-
-                                    {% if modified is defined %}
-                                        Le <span class="">{{ concert.date | date("d M Y", "Europe/Paris") }}</span>
-                                    {% endif %}
-
-
-                                </div>
-
-                                <div class="col-sm-12">
-
-                                    {{ form_widget (form.date,{'attr':{'class':'hide',
-                                        'placeholder':'Date: 01-01-1960', 'id':''}}) }}
-
-                                    <input type="text" id="datepicker" class="datepicker form-control"
-                                           placeholder="Date: 01-01-1960" autocomplete="off"
-                                            {% if modified is defined %}
-                                                value="{{ concert.date | date("d-m-Y") }}"
-                                            {% endif %}
-                                           required>
-                                </div>
+                        {% if form.name is defined %}
+                            <div class="col-sm-3">
+                                {{ form_label(form.name,'Nom du concert', {'label_attr': {'class':'control-label'}}) }}
                             </div>
+
+                            <div class="col-sm-12">
+                                {{ form_widget(form.name) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            {{ form_label(form.image, "Image: ", {'label_attr': {'class':
+                                'control-label'}}) }}
                         </div>
                         <div class="col-sm-5">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    {{ form_label(form.time, "Heure", {'label_attr': {'class':
-                                        'control-label'}}) }}
-                                </div>
-                                <div class="col-sm-12">
-                                    {{ form_widget (form.time,{'attr':{'class':''}}) }}
-                                </div>
-                            </div>
+                            {{ form_widget (form.image,{'attr':{'class':''}}) }}
+
                         </div>
+
                     </div>
                 </div>
-            {% endif %}
-            <div class="row">
-                <div class="form-group">
-                    {% if form.price is defined %}
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    {{ form_label(form.price, "Prix", {'label_attr': {'class':
-                                        'control-label'}}) }}
-                                </div>
-                                <div class="col-sm-12">
-                                    {{ form_widget (form.price) }}
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-                    {% if form.nbplace is defined %}
-                        <div class="col-sm-6">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    {{ form_label(form.nbplace, "Nombre de places", {'label_attr': {'class':
-                                        'control-label'}}) }}
-                                </div>
-                                <div class="col-sm-12">
-                                    {{ form_widget (form.nbplace) }}
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
-
-                    {% if form.address is defined %}
-                        <div class="col-sm-6">
-
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    {{ form_label(form.address, "Adresse :", {'label_attr': {'class':
-                                        'control-label'}}) }}
-                                </div>
-                                <div class="col-sm-12">
-                                    {{ form_widget (form.address) }}
-                                </div>
-                            </div>
-                        </div>
-                    {% endif %}
 
 
-
-                    {% if form.codP is defined %}
-
-                        <div class="col-sm-6">
-
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    {{ form_label(form.codP, "Code postal", {'label_attr': {'class':
-                                        'control-label'}}) }}
-                                </div>
-                                <div class="col-sm-12">
-                                    {{ form_widget (form.codP) }}
-                                </div>
-                            </div>
-                        </div>
-
-                    {% endif %}
-                    {% if form.city is defined %}
-
-                        <div class="col-sm-12">
-                            {{ form_label(form.city, "Ville: ", {'label_attr': {'class':
-                                'control-label'}}) }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ form_widget (form.city) }}
-                        </div>
-                    {% endif %}
-
-
-                </div>
-            </div>
-            {% if form.description is defined %}
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            {{ form_label(form.description, "Description", {'label_attr': {'class':
-                                'control-label'}}) }}
-                        </div>
-                        <div class="col-sm-12">
-                            {{ form_widget (form.description) }}
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-
-        </div>
-        <div class="col-sm-3">
-            <div class="row">
-                <div class="col-sm-12 ">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="control-group">
+                {% if form.date is defined %}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
                                 <div class="row">
-                                    {% if form.state is defined %}
-                                        <div class="col-sm-5">
-                                            {{ form_label(form.state, "Etat: ", {'label_attr': {'class':
-                                                'control-label'}}) }}
-                                        </div>
-                                    {% endif %}
+                                    <div class="col-sm-5">
+                                        {{ form_label(form.date, "Date du concert: ", {'label_attr': {'class':
+                                            'control-label'}}) }}
+                                    </div>
 
-                                    {% if form.state is defined %}
-                                        <div class="col-sm-7">
-                                            {{ form_widget (form.state ,{'attr':{'class':'form-control'}}) }}
-                                        </div>
+                                    <div class="col-sm-7 text-right text-success">
 
-                                    {% endif %}
-
-                                    <div class="col-sm-12"><br></div>
-
-                                    {% if modified is defined %}
-                                        <div class="col-sm-3">
-
-                                            <a href="{{ path('user_admin_list_concert') }}"
-                                               id="concert-{{ concert.id }}"
-                                               class="btn btn-default btn-sm form-control btn-delete-concert">
-                                                <i class="glyphicon glyphicon-trash text-danger "
-                                                   data-toggle="modal"
-                                                   data-target="#myModal"></i>
-                                            </a>
-                                        </div>
-                                    {% endif %}
+                                        {% if modified is defined %}
+                                            Le <span class="">{{ concert.date | date("d M Y", "Europe/Paris") }}</span>
+                                        {% endif %}
 
 
-                                    <div class="col-sm-9 pull-right">
-                                        <input type="submit" class="btn btn-success btn-sm form-control"
-                                               value="Enregistrer">
+                                    </div>
+
+                                    <div class="col-sm-12">
+
+                                        {{ form_widget (form.date,{'attr':{'class':'hide',
+                                            'placeholder':'Date: 01-01-1960', 'id':''}}) }}
+
+                                        <input type="text" id="datepicker" class="datepicker form-control"
+                                               placeholder="Date: 01-01-1960" autocomplete="off"
+                                                {% if modified is defined %}
+                                                    value="{{ concert.date | date("d-m-Y") }}"
+                                                {% endif %}
+                                               required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {{ form_label(form.time, "Heure", {'label_attr': {'class':
+                                            'control-label'}}) }}
+                                    </div>
+                                    <div class="col-sm-12">
+                                        {{ form_widget (form.time,{'attr':{'class':''}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row">
+                    <div class="form-group">
+                        {% if form.price is defined %}
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {{ form_label(form.price, "Prix", {'label_attr': {'class':
+                                            'control-label'}}) }}
+                                    </div>
+                                    <div class="col-sm-12">
+                                        {{ form_widget (form.price) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if form.nbplace is defined %}
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {{ form_label(form.nbplace, "Nombre de places", {'label_attr': {'class':
+                                            'control-label'}}) }}
+                                    </div>
+                                    <div class="col-sm-12">
+                                        {{ form_widget (form.nbplace) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if form.address is defined %}
+                            <div class="col-sm-6">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {{ form_label(form.address, "Adresse :", {'label_attr': {'class':
+                                            'control-label'}}) }}
+                                    </div>
+                                    <div class="col-sm-12">
+                                        {{ form_widget (form.address) }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+
+
+                        {% if form.codP is defined %}
+
+                            <div class="col-sm-6">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {{ form_label(form.codP, "Code postal", {'label_attr': {'class':
+                                            'control-label'}}) }}
+                                    </div>
+                                    <div class="col-sm-12">
+                                        {{ form_widget (form.codP) }}
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
+                        {% endif %}
+                        {% if form.city is defined %}
+
+                            <div class="col-sm-12">
+                                {{ form_label(form.city, "Ville: ", {'label_attr': {'class':
+                                    'control-label'}}) }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ form_widget (form.city) }}
+                            </div>
+                        {% endif %}
+
+
                     </div>
                 </div>
-               
+                {% if form.description is defined %}
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{ form_label(form.description, "Description", {'label_attr': {'class':
+                                    'control-label'}}) }}
+                            </div>
+                            <div class="col-sm-12">
+                                {{ form_widget (form.description) }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+            </div>
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="control-group">
+                                    <div class="row">
+                                        {% if form.state is defined %}
+                                            <div class="col-sm-5">
+                                                {{ form_label(form.state, "Etat: ", {'label_attr': {'class':
+                                                    'control-label'}}) }}
+                                            </div>
+                                        {% endif %}
+
+                                        {% if form.state is defined %}
+                                            <div class="col-sm-7">
+                                                {{ form_widget (form.state ,{'attr':{'class':'form-control'}}) }}
+                                            </div>
+
+                                        {% endif %}
+
+                                        <div class="col-sm-12"><br></div>
+
+                                        {% if modified is defined %}
+                                            <div class="col-sm-3">
+
+                                                <a href="{{ path('user_admin_list_concert') }}"
+                                                   id="concert-{{ concert.id }}"
+                                                   class="btn btn-default btn-sm form-control btn-delete-concert">
+                                                    <i class="glyphicon glyphicon-trash text-danger "
+                                                       data-toggle="modal"
+                                                       data-target="#myModal"></i>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+
+
+                                        <div class="col-sm-9 pull-right">
+                                            <input type="submit" class="btn btn-success btn-sm form-control"
+                                                   value="Enregistrer">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
 
                     <div class="">
                         {{ form_rest(form) }}
@@ -275,6 +266,6 @@
         </div>
     </div>
 
-    
 
-    {% endblock %}
+
+{% endblock %}

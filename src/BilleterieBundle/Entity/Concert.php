@@ -81,14 +81,13 @@ class Concert
      */
     private $nbPlace;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
-     */
-    private $image; 
-    
    
+    
+   /**
+     * @ORM\ManyToOne(targetEntity="BilleterieBundle\Entity\Media", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $image;
 
     /**
      * @var string
@@ -311,31 +310,7 @@ class Concert
     {
         return $this->nbPlace;
     }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Concert
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
+    
     /**
      * Set description
      *
@@ -406,5 +381,29 @@ class Concert
     public function getTime()
     {
         return $this->time;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \BilleterieBundle\Entity\Media $image
+     *
+     * @return Concert
+     */
+    public function setImage(Media $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \BilleterieBundle\Entity\Media
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

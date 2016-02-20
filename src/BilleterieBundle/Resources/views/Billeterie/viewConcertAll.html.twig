@@ -20,39 +20,70 @@
         <div id="twitter-feed" class="carousel slide" data-interval="false">
             <div class="row">
                 <div class="post col-md-12">
-                    <table class="table table-hover">
-                        <tr class="">
-                            {#<th>Id</th>#}
-                            <th class="col-sm-3">Titre</th>
-                            <th class="col-sm-3">Ville</th>
-                            <th class="col-sm-2">Prix</th>
-                            <th class="col-sm-1">Nb Places</th>
-                            <th class="col-sm-2">Date du concert</th>
-                            <th class="col-sm-1">Liens</th>
-                        </tr>
-
+                    <div class="row">
+                        <div class=" col-md-12">
+                            <h2>Nos Concerts</h2>
+                        </div>
                         {% for concert in concerts %}
-                               <tr  {% if loop.index is odd %}class="color"{% endif %} id="tr-concert-{{ concert.id }}">
 
-                                <td>{{ concert.name | capitalize }}</td>
+                            <div class="col-md-3 list-concert">
+                                <a href="{{ path('billeterie_view_concert', {'slug': concert.slug}) }}">
+                                <img
+                                        {% if concert.image is null  or concert.image.path is null %}
+                                            src="{{ asset('uploads/images/400x300.png') }}"
+                                        {% else %}
+                                            src="{{ asset(concert.image.AssetPath ) }}"
+                                        {% endif %}
+                                        alt="" width="290" height="180">
+                                </a>
+                                <div class="caption">
+                                    <h4>{{ concert.name }}</h4>
 
-                                <td>{{ concert.city }}</td>
-                                <td>{{ concert.price }} €</td>
-                                <td>{{ concert.nbPlace }}</td>
+                                    <p>Prix: {{ concert.price }}€ - {{ concert.city }}
+                                        <a href="{{ path('billeterie_view_concert', {'slug': concert.slug}) }}" >
+                                            Voir</a>
+                                    </p>
 
-                                <td>{{ concert.date | date('d M Y') }}</td>
-                             <td>                          
-                              <a href="{{ path('billeterie_view_concert', {'slug': concert.slug}) }}">  
-                              Voir </a>
-
-</td>
-                            </tr>
-                        </a>
-
+                                </div>
+                            </div>
 
                         {% endfor %}
-                    </table>
-                
+
+                    </div>
+                    {#<table class="table table-hover">#}
+                    {#<tr class="">#}
+                    {#&#123;&#35;<th>Id</th>&#35;&#125;#}
+                    {#<th class="col-sm-3">Titre</th>#}
+                    {#<th class="col-sm-3">Ville</th>#}
+                    {#<th class="col-sm-2">Prix</th>#}
+                    {#<th class="col-sm-1">Nb Places</th>#}
+                    {#<th class="col-sm-2">Date du concert</th>#}
+                    {#<th class="col-sm-1">Liens</th>#}
+                    {#</tr>#}
+
+                    {#{% for concert in concerts %}#}
+                    {##}
+                    {#<tr  {% if loop.index is odd %}class="color"{% endif %} id="tr-concert-{{ concert.id }}">#}
+
+                    {#<td>{{ concert.name | capitalize }}</td>#}
+
+                    {#<td>{{ concert.city }}</td>#}
+                    {#<td>{{ concert.price }} €</td>#}
+                    {#<td>{{ concert.nbPlace }}</td>#}
+
+                    {#<td>{{ concert.date | date('d M Y') }}</td>#}
+                    {#<td>                          #}
+                    {#<a href="{{ path('billeterie_view_concert', {'slug': concert.slug}) }}">  #}
+                    {#Voir </a>#}
+
+                    {#</td>#}
+                    {#</tr>#}
+                    {#</a>#}
+
+
+                    {#{% endfor %}#}
+                    {#</table>#}
+
                     <div class="navigation">
                         {{ knp_pagination_render(concerts) }}
                     </div>

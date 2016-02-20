@@ -31,10 +31,10 @@ class ConcertType extends AbstractType
             ->add('date', DateType::class, array(
                 'attr' => array(
                     'class' => "",
-                    'placeholder' => 'date' ,
+                    'placeholder' => 'date',
                     'autocomplete' => 'off'
                 ),
-            ))  
+            ))
             ->add('time', TimeType::class, array(
                 'attr' => array(
                     'class' => "form-control",
@@ -77,6 +77,7 @@ class ConcertType extends AbstractType
                     'autocomplete' => 'off'
                 ),
             ))
+            ->add('image', MediaType::class, array())
             ->add('state', EntityType::class, array(
                     'class' => 'BilleterieBundle:State',
                     'choice_label' => 'title',
