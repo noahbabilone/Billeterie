@@ -29,7 +29,7 @@ security:
 #                default_target_path: /user
             logout:
                 path:   fos_user_security_logout
-                target: /login
+                target: /
 #            remember_me:
 #                key:        %secret%
 #                lifetime: 1800 # 30 min
